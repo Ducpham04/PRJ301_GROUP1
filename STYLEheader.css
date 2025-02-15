@@ -1,0 +1,85 @@
+header {
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #dad2d2;
+    padding: 70px;
+    
+}
+header{
+    height: 17vh;
+    background-image: linear-gradient(to right bottom ,rgba(160, 175, 158, 0.6), rgba(184, 237, 218, 0.6)) ,
+     url("https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+ 
+    background-position: 30%;
+    
+    background-position: center;
+    height: 17vh;
+    
+    
+    position: relative;
+}
+.logo {
+    position: absolute;
+    top: 36px;
+    left: 81px;
+    height: 158px;
+    width: 199px;
+}
+.header{
+    color: #fff;
+    text-transform: uppercase;
+
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+    
+    
+ text-align: center;
+}
+.heading-title{
+    display: block;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    animation-name: hieu-ung-di-chuyen-sang-trái;
+    animation-duration: 5s ;
+    animation-timing-function: ease-out;
+    
+}
+.heading-sub{
+    display: block;
+    font-size: 15px;
+    letter-spacing: 3px;
+    animation-name: hieu-ung-di-chuyen-sang-phai;
+    animation-duration: 5s ;
+    animation-timing-function: ease-out;
+}
+@keyframes hieu-ung-di-chuyen-sang-trai{
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80%{
+        transform: translateX(15px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes hieu-ung-di-chuyen-sang-phai{
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80%{
+        transform: translateX(-15px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+

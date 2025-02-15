@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="css/styleform.css">
+
+</head>
+<body>
+<form action="" method="post">
+
+    <div class="form">
+        <h3>Thông tin sản phẩm</h3>
+        <img src="" alt="" id="productImage" width="100" height="100">
+        <label for="name">Tên sản phẩm:</label>
+        <input type="text" id="name">
+
+        <br>
+
+        <label for="code">Mã số sản phẩm</label>
+        <input type="text" id="code">
+
+        <br>
+
+        <label for="size">Size</label>
+        <input type="text" id="size">
+
+        <br>
+
+        <label for="status">Trạng thái sản phẩm</label>
+        <input type="text" id="status">
+        <br>
+        <label for="price">Giá</label>
+        <input type="text" id="price">
+        <br>
+        <br>
+        <br>
+        <center>
+            <button type="button" onclick="updateProduct()">Update</button>
+            <button type="button" onclick="deleteProduct()">Delete</button>
+            <button type="button" onclick="window.location.href='index.html'">Cancel</button>
+        </center>
+    </div>
+
+
+</form>
+<script src="js/const.js"></script>
+<script src="js/Product.js"></script>
+<script src="js/form1.js"></script>
+<script>
+    let productArray;
+    getProductList();
+    let product = JSON.parse(localStorage.getItem(KEY_PRODUCT));
+    document.getElementById("name").value = product.description;
+    document.getElementById("code").value = product.code;
+    document.getElementById("size").value = product.size;
+    document.getElementById("price").value = product.price;
+    document.getElementById("status").value = product.status;
+    document.getElementById("productImage").src = product.image;
+
+
+
+    function updateProduct() {
+        let description = document.getElementById("name").value;
+        let code = document.getElementById("code").value;
+        let size = document.getElementById("size").value;
+        let price = document.getElementById("price").value;
+        let status = document.getElementById("status").value;
+        let image = document.getElementById("productImage").src
+        let productEdit = new Product(code, price, status, size, description, image)
+
+        for (let i = 0; i < productArray.length; i++) {
+            if (productArray[i].code === productEdit.code){
+                productArray.splice(i,1,productEdit)
+            }
+        }
+        localStorage.setItem(KEY_PRODUCT_LIST, JSON.stringify(productArray))
+        alert("Update product successfully!")
+        window.location.href = "index.html"
+    }
+
+    function getProductList() {
+        if (localStorage.getItem(KEY_PRODUCT_LIST)) {
+            productArray = JSON.parse(localStorage.getItem(KEY_PRODUCT_LIST))
+        } else {
+            productArray=[]
+        }
+    }
+    
+    function deleteProduct() {
+        let deleteConfirmation = confirm("Do you want to delete?")
+        if (deleteConfirmation){
+            for (let i = 0; i < productArray.length; i++) {
+                if (productArray[i].code === product.code){
+                    productArray.splice(i,1)
+                }
+            }
+        }
+        localStorage.setItem(KEY_PRODUCT_LIST, JSON.stringify(productArray))
+        alert("Delete product successfully!")
+        window.location.href = "index.html"
+    }
+
+</script>
+
+</body>
+</html>
+</body>
+</html>
